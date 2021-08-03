@@ -10,7 +10,6 @@ const getFriends = async (req, res) => {
   friends = await Promise.all(
     friends.map(async (friend) => {
       const name = await findUserWithId(friend);
-      //   const name = await User.findById(friend);
       return { friendId: friend, friendName: name };
     })
   );

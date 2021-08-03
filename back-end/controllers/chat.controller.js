@@ -30,24 +30,29 @@ const createChat = async (req, res) => {
   const chatUserId = req.body.chatUserId;
   const userId = req.userId;
 
+  const user = await User.findById(userId);
   const chatUser = await User.findById(chatUserId);
-
   if (!chatUser) {
     return res.status(404).json({ error: 'User does not exist' });
   }
 
-  let chat = await Chat.find({
+  const index = user.friends.indexOf(chatUserId);
+  if (index < 0) {
+    return res.status(404).json({ error: 'Not Friend' });
+  }
+
+  let chat = await Chat.findOne({
     $or: [
       { $and: [{ user1_id: userId }, { user2_id: chatUserId }] },
       { $and: [{ user1_id: chatUserId }, { user2_id: userId }] },
     ],
   });
-
   if (chat) {
     return res.status(200).json({
       chatId: chat.id,
       chatUserId: chatUserId,
       chatUserName: chatUser.name,
+      message: 'created',
     });
   }
 
@@ -58,8 +63,13 @@ const createChat = async (req, res) => {
 
   try {
     chat = await chat.save();
+    const chatId = chat.id;
+    user.chats.unshift(chat.id);
+    chatUser.chats.unshift(chat.id);
+    await user.save();
+    await chatUser.save();
     return res.status(200).json({
-      chatId: chat.id,
+      chatId: chatId,
       chatUserId: chatUserId,
       chatUserName: chatUser.name,
     });

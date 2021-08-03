@@ -5,12 +5,16 @@ const chatLineSchema = new Schema(
   {
     chat_id: {
       type: Schema.Types.ObjectId,
-      ref: 'Chat'
+      ref: 'Chat',
     },
-    user_Id: {
+    user_id: {
       type: Schema.Types.ObjectId,
-      ref: 'User'
-    }
+      ref: 'User',
+    },
+    line: {
+      type: String,
+      default: '',
+    },
   },
   { timestamps: true }
 );

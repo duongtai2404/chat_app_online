@@ -1,6 +1,7 @@
 import axios from 'axios';
+import YOUR_IP_COMPUTER from '../constants';
 
-const BASE_URL = 'http://192.168.1.7:9000/';
+const BASE_URL = `http://${YOUR_IP_COMPUTER}:9000`;
 
 export const instance = axios.create({
   baseURL: BASE_URL,

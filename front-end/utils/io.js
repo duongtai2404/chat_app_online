@@ -1,6 +1,7 @@
 import io from 'socket.io-client';
+import YOUR_IP_COMPUTER from '../constants';
 
-const SERVER_URL = 'http://192.168.1.7:9000/';
+const SERVER_URL = `http://${YOUR_IP_COMPUTER}:9000`;
 
 var socket;
 

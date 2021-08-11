@@ -11,34 +11,28 @@ import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
 import LoadingScreen from './LoadingScreen';
 import Chat from './Chat';
-import { connectToServer, loginSuccessful } from '../utils/io';
+import CallScreen from './CallScreen';
 
 const MainScreen = () => {
   const getChatsStatus = useSelector((state) => state.listChat.getChatsStatus);
-  // const userId = useSelector((state) => state.user.userId);
-
-  // useEffect(() => {
-  //   if (getChatsStatus === 'successful') {
-  //     loginSuccessful(userId);
-  //   }
-  // });
 
   return (
-    <NavigationContainer>
-      {getChatsStatus === '' ? (
-        <Stack.Navigator>
-          <Stack.Screen name='Login' component={LoginScreen} />
-          <Stack.Screen name='Signup' component={SignupScreen} />
-        </Stack.Navigator>
-      ) : getChatsStatus === 'successful' ? (
-        <Stack.Navigator headerMode='none'>
-          <Stack.Screen name='BottomTab' component={BottomTab} />
-          <Stack.Screen name='MainChat' component={Chat} />
-        </Stack.Navigator>
-      ) : (
-        <LoadingScreen />
-      )}
-    </NavigationContainer>
+    <CallScreen />
+    // <NavigationContainer>
+    //   {getChatsStatus === '' ? (
+    //     <Stack.Navigator>
+    //       <Stack.Screen name='Login' component={LoginScreen} />
+    //       <Stack.Screen name='Signup' component={SignupScreen} />
+    //     </Stack.Navigator>
+    //   ) : getChatsStatus === 'successful' ? (
+    //     <Stack.Navigator headerMode='none'>
+    //       <Stack.Screen name='BottomTab' component={BottomTab} />
+    //       <Stack.Screen name='MainChat' component={Chat} />
+    //     </Stack.Navigator>
+    //   ) : (
+    //     <LoadingScreen />s
+    //   )}
+    // </NavigationContainer>
   );
 };
 

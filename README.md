@@ -56,7 +56,7 @@ When one tab is openned on your browser, open your camera to scan the qr code to
 Project is: _in progress_
 
 ## Demo
-You can see [demo](https://drive.google.com/file/d/10H3TI30h7wZy61LxX1gRNpF5Lcn5QHLJ/view?usp=sharing) here.
+You can see demo [here](https://drive.google.com/file/d/10H3TI30h7wZy61LxX1gRNpF5Lcn5QHLJ/view?usp=sharing).
 
 ## Contact
 Created by [@TaiDuong99](https://www.facebook.com/tai.duong.313/) - feel free to contact me!
